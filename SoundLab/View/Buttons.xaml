@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="SoundLab.View.Buttons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SoundLab.View"
+             xmlns:vm="clr-namespace:SoundLab.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="100"
+             d:DesignWidth="335.667"
+             Padding="10">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <Border CornerRadius="20" 
+                Background="{StaticResource ColorB2}" 
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="2"/>
+
+        <!--<TextBlock Style="{StaticResource Text}"  Text="Play"/>-->
+        <Button Grid.Row="0" Grid.RowSpan="2" 
+                Grid.Column="0" Style="{StaticResource btn}" 
+                Content="Start"
+                Margin="10,5,10,5" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"
+                Command="{Binding Start}"/>
+        <!--<TextBlock Style="{StaticResource Text}"  Text="Stop" Grid.Column="1"/>-->
+        <Button Grid.Row="0" Grid.RowSpan="2" 
+                Grid.Column="1" Style="{StaticResource btn}"  
+                Content="Stop" Margin="10,5,10,5" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"
+                Command="{Binding Stop}"/>
+        <TextBlock Style="{StaticResource Text}"  Text="Device" Grid.Column="2"/>
+        <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBox}" Text="{Binding DeviceNumber}"/>
+        
+    </Grid>
+</UserControl>

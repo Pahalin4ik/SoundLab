@@ -1,0 +1,116 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="ClickedColor1">#242D4B</Color>
+    <Color x:Key="OveredColor1">#212A48</Color>
+    <Color x:Key="Color1">#1e2745</Color>
+    <Color x:Key="Color2">#182039</Color>
+    <SolidColorBrush x:Key="BorderColor" Color="{StaticResource OveredColor1}"/>
+    <SolidColorBrush x:Key="ColorB1" Color="{StaticResource Color1}"/>
+    <SolidColorBrush x:Key="ColorB2" Color="{StaticResource Color2}"/>
+    <SolidColorBrush x:Key="Color3" Color="#141a32"/>
+    <SolidColorBrush x:Key="TextColor" Color="#D2D2D7"/>
+    <Style x:Key="Layout" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource ColorB2}"/>
+        <Setter Property="CornerRadius" Value="40"/>
+    </Style>
+    <Style x:Key="btn" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Margin" Value="20, 5"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="FontSize" Value="18pt"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="Background" Value="{StaticResource ColorB1}"/>
+            <Setter Property="FontFamily" Value="Rubik"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="20">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{TemplateBinding Content}" 
+                                       FontSize="{TemplateBinding FontSize}" 
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                        HorizontalAlignment="Center"/>
+
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                        From="20,0"
+                                        Duration="0:0:0.2"/>
+                        <ThicknessAnimation Storyboard.TargetProperty="Padding"
+                                        From="12, 0"
+                                        To="12"
+                                        Duration="0:0:0.1"/>
+           
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Storyboard.TargetProperty="Background.Color"
+                                        From="{StaticResource OveredColor1}"
+                                        To="{StaticResource ClickedColor1}"
+                                        AutoReverse="True"
+                                        Duration="0:0:0.2"/>
+
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Storyboard.TargetProperty="Background.Color"
+                                        From="{StaticResource Color1}"
+                                        To="{StaticResource OveredColor1}"
+                                        Duration="0:0:0.2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Storyboard.TargetProperty="Background.Color"
+                                        From="{StaticResource OveredColor1}"
+                                        To="{StaticResource Color1}"
+                                        Duration="0:0:0.2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Viewer" TargetType="ScrollViewer">
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+    </Style>
+    <Style x:Key="Text" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+        <Setter Property="FontSize" Value="18pt"/>
+        <Setter Property="FontFamily" Value="Rubik"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="TextBox" TargetType="TextBox">
+        <Setter Property="Background" Value="{StaticResource ColorB1}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="18pt"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource TextColor}"/>
+        <Setter Property="MaxLength" Value="1"/>
+        <Setter Property="MaxLines" Value="1"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+</ResourceDictionary>
